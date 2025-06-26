@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}Add Book - Library Management System{% endblock %}
+
+{% block header %}Add New Book{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold">Book Information</h6>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.title.label(class="form-label") }}
+                            {{ form.title(class="form-control") }}
+                            {% if form.title.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.title.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            {{ form.author.label(class="form-label") }}
+                            {{ form.author(class="form-control") }}
+                            {% if form.author.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.author.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.isbn.label(class="form-label") }}
+                            {{ form.isbn(class="form-control") }}
+                            {% if form.isbn.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.isbn.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            {{ form.category.label(class="form-label") }}
+                            {{ form.category(class="form-select") }}
+                            {% if form.category.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.category.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.total_copies.label(class="form-label") }}
+                            {{ form.total_copies(class="form-control") }}
+                            {% if form.total_copies.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.total_copies.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            {{ form.publication_year.label(class="form-label") }}
+                            {{ form.publication_year(class="form-control") }}
+                            {% if form.publication_year.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.publication_year.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        {{ form.submit(class="btn btn-primary") }}
+                        <a href="{{ url_for('books') }}" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
